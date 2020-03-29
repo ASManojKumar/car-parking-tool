@@ -1,0 +1,52 @@
+.parking-list-container {
+  padding: 15px;
+  .query-btn {
+    margin-right: 10px;
+  }
+  .search-section {
+    margin-top: 20px;
+    .form-control {
+      height: 30px;
+    }
+    .color-dropdown {
+      margin-right: 13px;
+    } // .search-btn {
+    //   margin-right: 12px;
+    // }
+  }
+  .table-container {
+    margin-top: 20px;
+    .table {
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid #F6F9FB;
+      table-layout: fixed;
+      background-color: #FFFFFF;
+      tr {
+        th {
+          background-color: #434546;
+          padding: 10px 24px;
+          font-weight: 400;
+          border-bottom: none;
+          position: relative;
+          user-select: none;
+          color: #FFFFFF;
+        }
+        td {
+          padding: 8px 24px;
+          vertical-align: middle;
+          border: 1px solid #EEEEEE;
+        }
+      }
+    }
+    .no-results-container {
+      padding: 10vh;
+      position: relative;
+      border-radius: 0 0 4px 4px;
+      text-align: center;
+      height: calc(95vh - 300px);
+      display: table;
+      width: 100%;
+    }
+  }
+}

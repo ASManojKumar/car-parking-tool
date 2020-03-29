@@ -1,0 +1,33 @@
+<form #car_parking_form="ngForm" name="car_parking_form" (ngSubmit)="car_parking_form.valid && submitForm()" novalidate>
+  <div class="container car-parking-form-container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <div class="form-group has-feedback">
+          <label>
+            <span>Number of parking places</span>
+            <span class="required">*</span>
+          </label>
+          <input autocomplete="off" type="text" class="form-control" name="number_parking_place" [(ngModel)]="parking_place" placeholder="Enter no of parking place"
+            [pattern]="numbers_regex" maxlength="1024" required #number_parking_place="ngModel">
+          <div class="text-danger" *ngIf="number_parking_place.errors?.pattern">
+            Enter no of parking places
+          </div>
+        </div>
+        <div class="form-group has-feedback">
+          <label>
+            <span>Number of cars parked</span>
+            <span class="required">*</span>
+          </label>
+          <input autocomplete="off" type="text" class="form-control" name="no_of_cars_parked" [(ngModel)]="cars_parked" placeholder="Enter no of cars parked"
+            [pattern]="numbers_regex" maxlength="1024" required #no_of_cars_parked="ngModel">
+          <div class="text-danger" *ngIf="no_of_cars_parked.errors?.pattern">
+            Enter no of cars parked
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
