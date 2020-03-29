@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './modules/car-parking-tool/form/form.component';
 import { ListComponent } from './modules/car-parking-tool/list/list.component';
+import { ParkCarModalComponent } from './modules/car-parking-tool/modal/park-car-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'form', pathMatch: 'full' },
@@ -23,5 +24,6 @@ export class AppRoutingModule { }
 
 export const routingComponents = [
   FormComponent,
-  ListComponent
+  ListComponent,
+  ParkCarModalComponent
 ];

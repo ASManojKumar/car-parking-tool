@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ParkCarModalComponent } from '../modal/park-car-modal.component';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
   car_parking_tool: any;
 
-  constructor() {
+  constructor(private modalService: BsModalService) {
     this.car_parking_tool = {
       'total_parking_slots': 10,
       'color_section': []
@@ -47,6 +49,16 @@ export class ListComponent implements OnInit {
       this.car_parking_tool.color_section.push({
         'color': color.carColor
       })
+    });
+  }
+
+  parkCar(data) {
+    let edit_key_result = { ...data };
+    let modal = this.modalService.show(ParkCarModalComponent, { class: 'modal-xs' });
+    (<ParkCarModalComponent>modal.content).showConfirmationModal();
+    (<ParkCarModalComponent>modal.content).onClose.subscribe(result => {
+      if (result) {
+      }
     });
   }
 

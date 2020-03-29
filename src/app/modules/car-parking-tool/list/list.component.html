@@ -12,14 +12,13 @@
     </div>
     <div class="col-xs-6 text-right">
       <button class="btn btn-sm btn-success query-btn">Query Data</button>
-      <button class="btn btn-sm btn-danger" [disabled]="car_parking_tool.car_details.length === 10">Park a Car</button>
+      <button class="btn btn-sm btn-danger" [disabled]="car_parking_tool.car_details.length === 10" (click)="parkCar(template)">Park a Car</button>
     </div>
     <div class="pull-right search-section">
       <div class="col-xs-6">
         <input autocomplete="off" type="text" class="form-control" name="search_parking_number" [(ngModel)]="car_parking_tool.parking_number"
           placeholder="Type Reg No" maxlength="1024" required #search_parking_number="ngModel">
       </div>
-      <!-- <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="true" [(value)]="dataModel" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown> -->
       <div class="btn-group color-dropdown" dropdown>
         <button id="button-basic" dropdownToggle type="button" class="btn btn-sm btn-default dropdown-toggle" auto-close="outsideClick">
           Choose Color
@@ -31,7 +30,6 @@
           </li>
         </ul>
       </div>
-      <!-- <button class="btn btn-sm btn-info search-btn">Search</button> -->
       <button class="btn btn-sm btn-default" (click)="resetFilterSelection()">Reset</button>
     </div>
     <div class="col-xs-12 table-container">

@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Park a Car</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #park_new_car_form="ngForm" name="park_new_car_form" (ngSubmit)="park_new_car_form.valid && submitForm()" novalidate>
+    <div class="container car-parking-form-container">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <div class="form-group has-feedback">
+            <label>
+              <span>Enter Car Registration Number</span>
+              <span class="required">*</span>
+            </label>
+            <input autocomplete="off" type="text" class="form-control" name="car_reg_number" [(ngModel)]="registration_number" placeholder="Enter car reg number"
+              maxlength="1024" required #car_reg_number="ngModel">
+            <div class="text-danger" *ngIf="car_reg_number.errors?.pattern">
+              Car Registration Number Required
+            </div>
+          </div>
+          <div class="form-group has-feedback">
+            <label>
+              <span>Enter Car Color</span>
+              <span class="required">*</span>
+            </label>
+            <input autocomplete="off" type="text" class="form-control" name="car_color" [(ngModel)]="color" placeholder="Enter car color"
+              maxlength="1024" required #car_color="ngModel">
+            <div class="text-danger" *ngIf="car_color.errors?.pattern">
+              Car Color is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success" type="submit">Park Car</button>
+      </div>
+    </div>
+  </form>
+
+</div>

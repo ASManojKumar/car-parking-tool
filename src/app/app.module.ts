@@ -10,6 +10,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterPipe } from './shared/filter.pipe';
 import { pipesModule } from './shared/pipes.module';
+import { ParkCarModalComponent } from './modules/car-parking-tool/modal/park-car-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { pipesModule } from './shared/pipes.module';
     pipesModule.forRoot()
   ],
   providers: [FilterPipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ParkCarModalComponent]
 })
 export class AppModule { }
