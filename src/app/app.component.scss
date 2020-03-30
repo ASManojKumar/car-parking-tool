@@ -10,3 +10,19 @@ body {
 .btn:focus {
   outline: 0;
 }
+
+.form-group label {
+  .required {
+    font-size: 12px;
+    color: #ED1C24;
+    top: -4px;
+    position: relative;
+    font-weight: 500;
+  }
+}
+
+.form-control {
+  &.is-invalid {
+    border-color: #ED1C24;
+  }
+}

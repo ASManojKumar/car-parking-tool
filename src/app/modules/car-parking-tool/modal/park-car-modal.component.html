@@ -5,7 +5,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <form #park_new_car_form="ngForm" name="park_new_car_form" (ngSubmit)="park_new_car_form.valid && submitForm()" novalidate>
+  <form #parkNewCarForm="ngForm" name="parkNewCarForm" (ngSubmit)="parkNewCarForm.form.valid && submitForm()" novalidate>
     <div class="container car-parking-form-container">
       <div class="row">
         <div class="col-sm-6 offset-sm-3">
@@ -14,10 +14,10 @@
               <span>Enter Car Registration Number</span>
               <span class="required">*</span>
             </label>
-            <input autocomplete="off" type="text" class="form-control" name="car_reg_number" [(ngModel)]="park_car_modal.registration_number"
-              placeholder="Enter car reg number" maxlength="1024" required #car_reg_number="ngModel">
-            <div class="text-danger" *ngIf="car_reg_number.errors?.pattern">
-              Car Registration Number Required
+            <input autocomplete="off" type="text" class="form-control" name="carRegNumber" [(ngModel)]="park_car_modal.registration_number"
+              placeholder="Enter car reg number" maxlength="1024" required #carRegNumber="ngModel">
+            <div *ngIf="parkNewCarForm.submitted && carRegNumber.invalid" class="alert alert-danger">
+              <div *ngIf="carRegNumber.errors.required">Car Registration Number Required</div>
             </div>
           </div>
           <div class="form-group has-feedback">
@@ -25,10 +25,10 @@
               <span>Enter Car Color</span>
               <span class="required">*</span>
             </label>
-            <input autocomplete="off" type="text" class="form-control" name="car_color" [(ngModel)]="park_car_modal.color" placeholder="Enter car color"
-              maxlength="1024" required #car_color="ngModel">
-            <div class="text-danger" *ngIf="car_color.errors?.pattern">
-              Car Color is required
+            <input autocomplete="off" type="text" class="form-control" name="carColor" [(ngModel)]="park_car_modal.color" placeholder="Enter car color"
+              maxlength="1024" required #carColor="ngModel">
+            <div *ngIf="parkNewCarForm.submitted && carColor.invalid" class="alert alert-danger">
+              <div *ngIf="carColor.errors.required">Car Color is required</div>
             </div>
           </div>
         </div>
