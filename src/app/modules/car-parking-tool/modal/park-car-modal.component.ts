@@ -7,11 +7,13 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   templateUrl: './park-car-modal.component.html'
 })
 export class ParkCarModalComponent {
-  data: [];
+  park_car_modal: any;
   public onClose: Subject<any>;
 
   constructor(
-    private _bsModalRef: BsModalRef) { }
+    private _bsModalRef: BsModalRef) {
+    this.park_car_modal = {};
+  }
 
 
   public ngOnInit() {
@@ -23,7 +25,7 @@ export class ParkCarModalComponent {
 
   public submitForm() {
     this._bsModalRef.hide();
-    this.onClose.next(true);
+    this.onClose.next(this.park_car_modal);
   }
 
   public onCancel() {

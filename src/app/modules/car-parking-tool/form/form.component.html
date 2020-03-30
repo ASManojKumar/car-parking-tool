@@ -1,16 +1,20 @@
-<form #car_parking_form="ngForm" name="car_parking_form" (ngSubmit)="car_parking_form.valid && submitForm()" novalidate>
+<form #parkingform="ngForm" name="form" (ngSubmit)="parkingform.form.valid && submitForm()" novalidate>
   <div class="container car-parking-form-container">
     <div class="row">
-      <div class="col-sm-6 offset-sm-3">
+      <div class="col-xs-12">
         <div class="form-group has-feedback">
-          <label>
-            <span>Number of parking places</span>
-            <span class="required">*</span>
-          </label>
-          <input autocomplete="off" type="text" class="form-control" name="number_parking_place" [(ngModel)]="parking_place" placeholder="Enter no of parking place"
-            [pattern]="numbers_regex" maxlength="1024" required #number_parking_place="ngModel">
-          <div class="text-danger" *ngIf="number_parking_place.errors?.pattern">
-            Enter no of parking places
+          <div class="form-group">
+            <label>
+              <span>Number of parking places</span>
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" name="totalParkingNumber" [(ngModel)]="parking_place" #totalParkingNumber="ngModel"
+              [ngClass]="{ 'is-invalid': parkingform.submitted && totalParkingNumber.invalid }" required placeholder="Enter no of parking place"
+              [pattern]="numbers_regex" />
+            <div *ngIf="parkingform.submitted && totalParkingNumber.invalid" class="alert alert-danger">
+              <div *ngIf="totalParkingNumber.errors.required">No of parking places required</div>
+              <div *ngIf="totalParkingNumber.errors.pattern">Enter valid numbers</div>
+            </div>
           </div>
         </div>
         <div class="form-group has-feedback">
@@ -18,10 +22,11 @@
             <span>Number of cars parked</span>
             <span class="required">*</span>
           </label>
-          <input autocomplete="off" type="text" class="form-control" name="no_of_cars_parked" [(ngModel)]="cars_parked" placeholder="Enter no of cars parked"
-            [pattern]="numbers_regex" maxlength="1024" required #no_of_cars_parked="ngModel">
-          <div class="text-danger" *ngIf="no_of_cars_parked.errors?.pattern">
-            Enter no of cars parked
+          <input type="text" class="form-control" name="totalCarsParked" [(ngModel)]="cars_parked" #totalCarsParked="ngModel" [ngClass]="{ 'is-invalid': parkingform.submitted && totalCarsParked.invalid }"
+            required placeholder="Enter no of cars parked" [pattern]="numbers_regex" />
+          <div *ngIf="parkingform.submitted && totalCarsParked.invalid" class="alert alert-danger">
+            <div *ngIf="totalCarsParked.errors.required">No of cars parked required</div>
+            <div *ngIf="totalCarsParked.errors.pattern">Enter valid numbers</div>
           </div>
         </div>
       </div>

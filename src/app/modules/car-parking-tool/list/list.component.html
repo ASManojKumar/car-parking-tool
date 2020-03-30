@@ -25,7 +25,7 @@
           <span class="caret"></span>
         </button>
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="actionList">
-          <li role="menuitem" *ngFor="let color of car_parking_tool.color_section">
+          <li role="menuitem" class="text-capitalize" *ngFor="let color of car_parking_tool.color_section">
             <a class="dropdown-item" [innerText]="color.color"></a>
           </li>
         </ul>
@@ -44,10 +44,10 @@
         </tr>
         <tr *ngFor="let car of car_parking_tool.car_details | filter : car_parking_tool.parking_number | filter : color; index as i; let first = first ;let last = last;">
           <td [innerText]="i+1"></td>
-          <td [innerText]="car.carNumber"></td>
-          <td class="text-center" [innerText]="car.carColor"></td>
+          <td [innerText]="car.carNumber" class="text-uppercase"></td>
+          <td class="text-center text-capitalize" [innerText]="car.carColor"></td>
           <td class="text-center" [innerText]="car.slotNumber"></td>
-          <td class="text-center" [innerText]="car.carParkingTime | date"></td>
+          <td class="text-center" [innerText]="car.carParkingTime | date: 'MMM d, y, h:mm a'"></td>
           <td class="text-center">
             <button class="btn btn-warning" (click)="removeCarDetails(i)">Remove</button>
           </td>
