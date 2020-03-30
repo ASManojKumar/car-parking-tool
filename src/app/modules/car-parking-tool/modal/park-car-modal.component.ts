@@ -10,8 +10,7 @@ export class ParkCarModalComponent {
   park_car_modal: any;
   public onClose: Subject<any>;
 
-  constructor(
-    private _bsModalRef: BsModalRef) {
+  constructor(private _bsModalRef: BsModalRef) {
     this.park_car_modal = {};
   }
 

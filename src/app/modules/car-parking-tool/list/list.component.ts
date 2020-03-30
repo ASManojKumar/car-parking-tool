@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ParkCarModalComponent } from '../modal/park-car-modal.component';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
+  providers: [BsModalRef]
 })
 export class ListComponent implements OnInit {
   car_parking_tool: any;
   color: any;
-
-  constructor(private modalService: BsModalService) {
+  public onClose: Subject<any>;
+  constructor(private modalService: BsModalService, private _bsModalRef: BsModalRef) {
     this.car_parking_tool = {
-      'total_parking_slots': 10
+      'total_parking_slots': 10,
+      'fee_collected': 0
     };
   }
 
@@ -100,6 +103,7 @@ export class ListComponent implements OnInit {
   // removing parked car
   removeCarDetails(index) {
     this.car_parking_tool.car_details.splice(index, 1);
+    this.car_parking_tool.fee_collected += 20;
     this.getCarSlotNumber();
   }
 
@@ -107,6 +111,15 @@ export class ListComponent implements OnInit {
   resetFilterSelection() {
     this.car_parking_tool.parking_number = '';
     delete this.color;
+  }
+
+  fetchData(template: TemplateRef<any>) {
+    this._bsModalRef = this.modalService.show(template);
+  }
+
+  public onCancel() {
+    this.onClose.next(false);
+    this._bsModalRef.hide();
   }
 
 }

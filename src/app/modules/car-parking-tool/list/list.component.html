@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="col-xs-6 text-right">
-      <button class="btn btn-sm btn-success query-btn">Query Data</button>
+      <button class="btn btn-sm btn-success query-btn" (click)="fetchData(template)">Query Data</button>
       <button class="btn btn-sm btn-danger" [disabled]="car_parking_tool.car_details.length === 10" (click)="parkCar(template)">Park a Car</button>
     </div>
     <div class="pull-right search-section">
@@ -52,3 +52,16 @@
     </div>
   </div>
 </div>
+
+<!-- modal for showing fees collected -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Total Fees Collected</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Fees Collected - {{car_parking_tool.fee_collected}}
+  </div>
+</ng-template>
