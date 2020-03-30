@@ -6,13 +6,22 @@
   .search-section {
     margin-top: 20px;
     .form-control {
-      height: 30px;
+      height: 31px;
     }
-    .color-dropdown {
-      margin-right: 13px;
-    } // .search-btn {
-    //   margin-right: 12px;
-    // }
+    .color-dropdown-section {
+      margin-right: 10px;
+      height: 31px;
+      color: #999999;
+      border: 1px solid #CCCCCC;
+      outline: 0;
+      background-color: #FFFFFF;
+      margin-left: -3px;
+    }
+    .reset-btn {
+      background-color: #6C747D;
+      border-color: #6C747D;
+      color: #FFFFFF;
+    }
   }
   .table-container {
     margin-top: 20px;

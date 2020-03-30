@@ -9,6 +9,7 @@ import { ParkCarModalComponent } from '../modal/park-car-modal.component';
 })
 export class ListComponent implements OnInit {
   car_parking_tool: any;
+  color: any;
 
   constructor(private modalService: BsModalService) {
     this.car_parking_tool = {
@@ -65,17 +66,19 @@ export class ListComponent implements OnInit {
     });
   }
 
+  // get missed slot number function
   getCarSlotMissingNumber() {
     var car_numbers = this.car_parking_tool.slot_numbers.sort();
-    var missing;
+    var missing_number;
     for (var i = 1; i <= 10; i++) {
       if (car_numbers[i - 1] != i) {
-        missing = i;
-        return missing;
+        missing_number = i;
+        return missing_number;
       }
     }
   }
 
+  // calling park car modal for parking new car
   parkCar() {
     let modal = this.modalService.show(ParkCarModalComponent, { class: 'modal-xs' });
     (<ParkCarModalComponent>modal.content).showConfirmationModal();
@@ -94,13 +97,16 @@ export class ListComponent implements OnInit {
     });
   }
 
+  // removing parked car
   removeCarDetails(index) {
     this.car_parking_tool.car_details.splice(index, 1);
     this.getCarSlotNumber();
   }
 
+  // reset filters applied
   resetFilterSelection() {
     this.car_parking_tool.parking_number = '';
+    delete this.color;
   }
 
 }

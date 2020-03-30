@@ -19,18 +19,11 @@
         <input autocomplete="off" type="text" class="form-control" name="search_parking_number" [(ngModel)]="car_parking_tool.parking_number"
           placeholder="Type Reg No" maxlength="1024" required #search_parking_number="ngModel">
       </div>
-      <div class="btn-group color-dropdown" dropdown>
-        <button id="button-basic" dropdownToggle type="button" class="btn btn-sm btn-default dropdown-toggle" auto-close="outsideClick">
-          Choose Color
-          <span class="caret"></span>
-        </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="actionList">
-          <li role="menuitem" class="text-capitalize" *ngFor="let color of car_parking_tool.color_section">
-            <a class="dropdown-item" [innerText]="color.color"></a>
-          </li>
-        </ul>
-      </div>
-      <button class="btn btn-sm btn-default" (click)="resetFilterSelection()">Reset</button>
+      <select class="color-dropdown-section" id="color" [(ngModel)]="color" name="color" placeholder="Choose Color">
+        <option hidden [ngValue]="undefined">Choose Color</option>
+        <option *ngFor="let color of car_parking_tool.color_section" [ngValue]="color">{{color.color}}</option>
+      </select>
+      <button class="btn btn-sm btn-default reset-btn" (click)="resetFilterSelection()">Reset</button>
     </div>
     <div class="col-xs-12 table-container">
       <table class="table">
